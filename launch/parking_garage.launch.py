@@ -24,7 +24,7 @@ def generate_launch_description():
     model_path = os.path.join(package_dir, 'models')
 
     gazebo_server_cmd_line = [
-        'gz', 'sim', '-r', '-v4', world]
+        'gz', 'sim', '-r', '-v 4', world]
 
     gazebo = ExecuteProcess(
         cmd=gazebo_server_cmd_line, output='screen')
