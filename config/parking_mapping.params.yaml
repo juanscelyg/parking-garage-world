@@ -1,0 +1,59 @@
+maps_manager_node:
+  ros__parameters:
+    use_sim_time: true
+    map_types: [bonxai, navmap]
+    bonxai:
+      freq: 10.0 
+      plugin: easynav_bonxai_maps_manager/BonxaiMapsManager
+    navmap:
+      freq: 10.0 
+      plugin: easynav_navmap_maps_manager/NavMapMapsManager
+
+localizer_node:
+  ros__parameters:
+    use_sim_time: true
+    localizer_types: [dummy]
+    dummy:
+      rt_freq: 50.0
+      freq: 5.0
+      reseed_freq: 0.1
+      plugin: easynav_localizer/DummyLocalizer
+      cycle_time_nort: 0.01
+      cycle_time_rt: 0.001
+
+planner_node:
+  ros__parameters:
+    use_sim_time: true
+    planner_types: [dummy]
+    dummy:
+      plugin: easynav_planner/DummyPlanner
+      max_allowed_slope_deg: 20.0
+
+controller_node:
+  ros__parameters:
+    use_sim_time: true
+    controller_types: [dummy]
+    dummy:
+      plugin: easynav_controller/DummyController
+      num_samples: 100
+      horizon_steps: 10	
+      dt:	0.1	
+      lambda:	0.1	
+      max_linear_velocity:	1.0	
+      max_angular_velocity:	1.0	
+      max_linear_acceleration:	0.5	
+      max_angular_acceleration:	1.0	
+      fov:	1.57	
+      safety_radius:	0.6	
+
+sensors_node:
+  ros__parameters:
+    use_sim_time: true
+    forget_time: 0.5
+
+system_node:
+  ros__parameters:
+    use_sim_time: true
+    use_real_time: false
+    position_tolerance: 0.3
+    angle_tolerance: 0.15
